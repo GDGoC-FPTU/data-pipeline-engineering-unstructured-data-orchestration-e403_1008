@@ -10,12 +10,12 @@ class UnifiedDocument(BaseModel):
     TODO: Khai báo các trường với kiểu dữ liệu str ở dưới.
     """
     # Khai báo các trường ở đây...
-    document_id: str
-    source_type: str
-    content: str
+    document_id: str = Field(...)
+    source_type: str = Field(...)
+    content: str = Field(...)
     
-    # Sử dụng Optional (có thể có hoặc không) và gán mặc định là None vì 
-    # trong thực tế một số file như vid2_missing_tags.json bị thiếu trường creator_name
-    author: Optional[str] = None
-    category: Optional[str] = None
-    timestamp: Optional[str] = None
+    # Sử dụng Field với default=None
+    # Vì Python 3.10+ hỗ trợ | None, ta dùng nó để thay thế Optional
+    author: str | None = Field(default=None)
+    category: str | None = Field(default=None)
+    timestamp: str | None = Field(default=None)
